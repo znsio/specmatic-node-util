@@ -1,0 +1,23 @@
+{
+  "name": "specmatic-util",
+  "version": "1.0.0",
+  "description": "Specmatic node wrapper utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/znsio/specmatic-util.git"
+  },
+  "keywords": [
+    "specmatic",
+    "node"
+  ],
+  "author": "Znsio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/znsio/specmatic-util/issues"
+  },
+  "homepage": "https://github.com/znsio/specmatic-util#readme"
+}
