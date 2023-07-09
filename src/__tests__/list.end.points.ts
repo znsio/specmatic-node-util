@@ -68,6 +68,22 @@ test('gives list of end points for a multiple routes defined on multiple routers
     expect(res.body).toStrictEqual(response);
 });
 
+test('ignore catch all route', async () => {
+    var app = express();
+    app.get('/', () => {});
+
+    specmatic.enableApiCoverage(app);
+
+    app.all('*', function (req, res) {
+        res.status(404).json({
+            "message": "not found"
+        });
+    });
+    const res = await request(app).get('/_specmatic/endpoints').accept('application/json').expect(200);
+    const response = generateResponseObject({ '/': ['GET'] });
+    expect(res.body).toStrictEqual(response);
+});
+
 function generateResponseObject(endPoints: { [key: string]: string[] }) {
     const structure = {
         contexts: {

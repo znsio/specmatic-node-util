@@ -15,6 +15,7 @@ const listEndPoints = (expressApp: any): { [key: string]: string[] } => {
         endPoints[apiDetail.path] = apiDetail.methods;
     });
     delete endPoints[`/${END_POINTS_API_ROUTE}`];
+    delete endPoints['*'];
     return endPoints;
 };
 
