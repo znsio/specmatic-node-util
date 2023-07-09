@@ -2,6 +2,17 @@ import * as specmatic from '..';
 import express from 'express';
 import request from 'supertest';
 
+test('adds end point only in test mode', async () => {
+    var app = express();
+    app.get('/', () => {});
+    process.env.NODE_ENV = 'not-test';
+    specmatic.enableApiCoverage(app);
+    await request(app).get('/_specmatic/endpoints').accept('application/json').expect(404);
+    process.env.NODE_ENV = 'test';
+    specmatic.enableApiCoverage(app);
+    await request(app).get('/_specmatic/endpoints').accept('application/json').expect(200);
+});
+
 test('adds an environment variable indicating api endpoits route is configured', async () => {
     var app = express();
     app.get('/', () => {});

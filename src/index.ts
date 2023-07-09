@@ -2,6 +2,7 @@ import listExpressEndpoints from 'express-list-endpoints';
 const END_POINTS_API_ROUTE = '_specmatic/endpoints';
 
 export const enableApiCoverage = (expressApp: any) => {
+    if (process.env.NODE_ENV !== 'test') return;
     process.env['endpointsAPI'] = END_POINTS_API_ROUTE;
     addEndPointsRoute(expressApp);
     console.log(`Endpoints API registered at ${END_POINTS_API_ROUTE}`);
