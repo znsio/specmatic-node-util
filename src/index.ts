@@ -5,7 +5,7 @@ export const enableApiCoverage = (expressApp: any) => {
     if (process.env.NODE_ENV !== 'test') return;
     process.env['endpointsAPI'] = END_POINTS_API_ROUTE;
     addEndPointsRoute(expressApp);
-    console.log(`Endpoints API registered at ${END_POINTS_API_ROUTE}`);
+    // console.log(`Endpoints API registered at ${END_POINTS_API_ROUTE}`);
 };
 
 const listEndPoints = (expressApp: any): { [key: string]: string[] } => {
